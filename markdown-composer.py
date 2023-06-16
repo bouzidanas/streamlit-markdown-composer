@@ -42,8 +42,6 @@ import sys
 import openai
 import tiktoken
 import streamlit as st
-import reveal_slides as rs
-import streamlit_tags as stt
 
 from dotenv import load_dotenv
 from code_editor import code_editor
@@ -98,17 +96,8 @@ div.row-widget.stButton > button:first-child > div {
 </style>
 """
 st.markdown(custom_app_css, unsafe_allow_html=True)
+
 ## OpenAI API Credentials setup ====================================================
-
-# Openai local configuration
-# Make sure to create a .env file in the same directory as this script (and in .gitignore)
-load_dotenv()
-try:
-    openai.organization = os.getenv("OPENAI_API_ORGANIZATION")
-    openai.api_key = os.getenv("OPENAI_API_KEY")
-except:
-    sys.stdout.write("No local variables containing OpenAI API credentials found.")
-
 with st.sidebar:
     st.markdown("## Configuration")
     with st.expander("OpenAI API Credentials"):
@@ -631,7 +620,7 @@ def get_commands(text):
     return final_text, commands, cursor_pos
 
 
-## Presenting generated content and data ======================================================
+## App ======================================================
 
 ## Input to query AI directly. Possible future feature.
 # ai_chat_input = st.text_input(
