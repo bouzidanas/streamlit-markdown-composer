@@ -737,8 +737,6 @@ if response_dict['type'] == "submit" and st.session_state.response == "":
 if response_dict['type'] == "submit" and st.session_state.response != "":
     st.session_state.response = ""
 
-st.write("\n\n")
-
 ## Adds bar below code editor containing buttons and inputs to configure AI
 col1, col2, col3, col4, col5, col6 = st.columns([1.4, 1.4, 1.2, 1.2, 1.2, 1.4])
 st.session_state.mselect = col2.selectbox("Model", ["3.5 turbo", "davince 003"], label_visibility="collapsed", help="model to use")
