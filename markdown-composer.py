@@ -626,6 +626,7 @@ def get_commands(text):
 #         placeholder="Ask AI to write ...",
 #     )
 
+# Prepare setup settings and elements for editor
 btn_settings_editor_btns = [{
                                 "name": "Ink",
                                 "feather": "PenTool",
@@ -654,17 +655,18 @@ btn_settings_editor_btns = [{
                                 "class": "flipped-order"
                             }]
 
-# Load Code Editor CSS from file
+## Load CSS to apply to Code Editor from file (is passed to Code Editor)
 with open('composer_code_editor_css.scss') as css_file:
     css_text = css_file.read()
 
-# Construct component props dictionary (->Code Editor)
+## Construct component props dictionary (is passed to Code Editor)
 comp_props = {
               "css": css_text, 
               "globalCSS": ":root {\n  --streamlit-dark-font-family: monospace;\n  ----streamlit-light-font-family: monospace;\n}\n\n#root button.flipped-order {\n  flex-direction: row-reverse;\n}"
             #   "globalCSS": ":root {\n  --streamlit-dark-font-family: monospace;\n  ----streamlit-light-font-family: monospace;\n}\n\nbody #root button.always-on > span {\n  margin-bottom: -1px;\n  opacity: 0;\n  transform: scale(0);\n  transition: opacity 300ms 150ms, transform 300ms 300ms;\n}\n\nbody:hover #root button.always-on > span {\n  margin-bottom: -1px;\n  opacity: 1;\n  transform: scale(1);\n}\n\n#root button.flipped-order {\n  flex-direction: row-reverse;\n}\n\nbody #root button.flipped-order > span {\n  width: 0;\n  transform-origin: left center;\n  transition: opacity 300ms 150ms, transform 300ms;\n}\n\nbody:hover #root button.flipped-order > span {\n  width: unset;\n}\n\n#root button.flipped-order.shifting {\n transition: transform 300ms;\n}\n\nbody:hover #root button.flipped-order.shifting {\n  transform: translate(50%);\n}\n"
              }
-  
+
+## Inner Ace editor props  (is passed to Code Editor)
 props = {
          "enableBasicAutocompletion": False,
          "enableLiveAutocompletion": False,
@@ -673,10 +675,13 @@ props = {
          "placeholder": "Enter text and press `Ctrl-Enter` or Cmd-Enter` to use AI...",
         }
 
+## Inner Ace editor additional options
 options = {"wrap": 76}
 
+## Code Editor component
 response_dict = code_editor(st.session_state.mycontents, lang="markdown", height=1000, buttons=btn_settings_editor_btns, props=props, options=options, component_props=comp_props, allow_reset=True, key="code_editor")
-    
+
+# handle `Write` button click or Ctrl/Cmd-Enter keypress
 if response_dict['type'] == "submit" and st.session_state.response == "":
     commands_list = []
     if "<!--" in response_dict['text'] and "-->" in response_dict['text']:
@@ -730,13 +735,9 @@ if response_dict['type'] == "submit" and st.session_state.response == "":
     st.experimental_rerun()
 
 if response_dict['type'] == "submit" and st.session_state.response != "":
-    # st.write('inside third if')
     st.session_state.response = ""
 
-# if ai_chat_input:
-#     if response_dict['text'] != "":
-
-
+## Adds bar below code editor containing buttons and inputs to configure AI
 col1, col2, col3, col4, col5, col6 = st.columns([1.4, 1.4, 1.2, 1.2, 1.2, 1.4])
 st.session_state.mselect = col2.selectbox("Model", ["3.5 turbo", "davince 003"], label_visibility="collapsed", help="model to use")
 st.session_state.lselect = col3.selectbox("Max tokens", ["auto", "short", "medium", "long"], label_visibility="collapsed", help="max token limit for request/completion result")
@@ -746,6 +747,7 @@ st.session_state.temp = col6.number_input("Temperature", min_value=0.0, max_valu
 st.write("\n")
 st.write("\n")
 
+# Adds container containing app settings to sidebar
 with st.sidebar:
     with st.expander("Settings"):
         st.markdown("#### Input")
@@ -758,14 +760,17 @@ with st.sidebar:
         
 if col1.button("redo") and st.session_state.mycontents != response_dict['text']:
     do_nothing = True
-    
+
+## Respond to Ink button click or `Alt+Shift+Enter` keypress
 if response_dict['type'] == "ink" and response_dict['text'] != "" and st.session_state.display != response_dict['text']:
     st.session_state.display = response_dict['text']
 
+## Display markdown output in expander below code editor
 if st.session_state.display != "":
     with st.expander("Rendered result", expanded=True):
         st.markdown(st.session_state.display)
 
+## Adds expander containing instructions and tips below code editor
 with st.expander("Instructions & Tips"):
     st.write("### Instructions")
     st.write("#### AI Write: Have the AI write something for you")
