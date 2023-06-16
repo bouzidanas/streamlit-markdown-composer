@@ -779,7 +779,7 @@ with st.expander("Instructions & Tips"):
     st.success("TIP: You can use spacing to your advantage here. For example, if you want the AI to write the next part of the section, press `Enter` twice after the heading (or the previous paragraph) and then do step \#2.")
     st.write("3. Click redo or change any setting to get AI to try again (replacing the previous result).")
     st.write("4. When you are happy with the result, click the 'Ink' button to keep the changes. Whatever is inked will be rendered below the editor in the 'Rendered result' section.")
-    st.info("NOTE: Once you click the 'Ink' or `Write` button (or press the keyboard shortcuts), the 'redo' button along with the setting inputs will no longer trigger a retry of the previous results.")
+    st.info("NOTE: Once you click the `Ink` or `Write` button (or press the keyboard shortcuts), the 'redo' button along with the setting inputs will no longer trigger a retry of the previous results.")
     st.success("TIP: If you have inked the response but want to retry the last AI result, you can press `Ctrl-Z` to undo, then place the cursor where you want the AI to try again and repeat step 2.")
     st.write("#### AI Ask: Ask AI to do something like provide a conclusion or reformat the text")
     st.write("1. Place the cursor where you want the AI to insert its response")
