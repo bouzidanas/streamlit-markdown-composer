@@ -37,13 +37,10 @@
 ##   style formatting (ex: --before|after|none|section, --temp=0.6).                                 ##
 ##                                                                                                   ##
 #######################################################################################################
-import os
 import sys
 import openai
 import tiktoken
 import streamlit as st
-
-from dotenv import load_dotenv
 from code_editor import code_editor
 
 st.set_page_config(initial_sidebar_state="collapsed")
