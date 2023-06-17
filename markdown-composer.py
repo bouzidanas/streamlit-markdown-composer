@@ -29,12 +29,17 @@
 ##                                                                                                   ##
 ## - Better logic for completing a sentence. If the cursor is in an incomplete sentence,             ##
 ##   the `completion_type` should be set to `sentence` and the ai prompt should be improved to get   ##
-##   a a more fitting result. Currently, in some situations, the app will try to rewrite the whole   ##
+##   a more fitting result. Currently, in some situations, the app will try to rewrite the whole     ##
 ##   paragraph instead.                                                                              ##
 ##                                                                                                   ##
 ## - Add a feature that allows user to set settings inside AI ask command so user doesnt have to     ##
 ##   leave the text editor to change settings with mouse. Current conception is to use command       ##
 ##   style formatting (ex: --before|after|none|section, --temp=0.6).                                 ##
+##                                                                                                   ##
+## - Add a feature (`Coffee` button next to `Ask`?) that supercharges the AI by using a strategy     ##
+##   where the AI is first asked to boil down the request to main subject matter, then asked for     ##
+##   top experts on subject matter, and finally told to respond to original request role playing as  ##
+##   the one of the top experts.                                                                     ##
 ##                                                                                                   ##
 #######################################################################################################
 import sys
