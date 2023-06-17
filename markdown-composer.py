@@ -37,9 +37,9 @@
 ##   style formatting (ex: --before|after|none|section, --temp=0.6).                                 ##
 ##                                                                                                   ##
 ## - Add a feature (`Coffee` button next to `Ask`?) that supercharges the AI by using a strategy     ##
-##   where the AI is first asked to boil down the request to main subject matter, then asked for     ##
-##   top experts on subject matter, and finally told to respond to original request role playing as  ##
-##   the one of the top experts.                                                                     ##
+##   (called "Expert Prompting") where the AI is first asked to boil down the request to main        ##
+##   subject matter, then asked for top experts on subject matter, and finally told to respond to    ##
+##   original request role playing as the one of the top experts.                                    ##
 ##                                                                                                   ##
 #######################################################################################################
 import sys
