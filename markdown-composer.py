@@ -3,7 +3,7 @@
 ## This is a Streamlit app that uses the OpenAI API to generate markdown text based on user input.   ##
 ##                                                                                                   ##
 ## AUTHOR: Anas Bouzid                                                                               ##
-## DATE: 2021-06-13                                                                                  ##
+## DATE: 2023-06-13                                                                                  ##
 ##                                                                                                   ##
 ############################################  WARNING!  ###############################################
 ##                                                                                                   ##
