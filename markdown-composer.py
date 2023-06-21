@@ -41,6 +41,8 @@
 ##   subject matter, then asked for top experts on subject matter, and finally told to respond to    ##
 ##   original request role playing as the one of the top experts.                                    ##
 ##                                                                                                   ##
+## - Add option in settings to change `best_of` parameter of OpenAI chatCompletion                   ##
+##                                                                                                   ##
 #######################################################################################################
 import sys
 import openai
